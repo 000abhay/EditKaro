@@ -19,12 +19,20 @@ document.getElementById("contactForm").addEventListener("submit", async (e) => {
         const result = await response.json();
 
         if (result.success) {
-            document.getElementById("contactStatus").textContent = "Message sent successfully!";
+            document.getElementById("contactStatus").textContent =
+                "Message sent successfully!";
             document.getElementById("contactForm").reset();
         } else {
-            document.getElementById("contactStatus").textContent = "Failed to send message.";
+            if (result.message === "Limit reached") {
+                document.getElementById("contactStatus").textContent =
+                    "Form limit reached. This demo accepts only 5 submissions.";
+            } else {
+                document.getElementById("contactStatus").textContent =
+                    "Failed to send message.";
+            }
         }
-    } catch (error) {
-        document.getElementById("contactStatus").textContent = "Failed to send message.";
+    } catch (err) {
+        document.getElementById("contactStatus").textContent =
+            "Error sending message.";
     }
 });
