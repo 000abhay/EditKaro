@@ -152,9 +152,11 @@ footer {
 
 .portfolio-card img {
     width: 100%;
-    height: 180px;
+    height: 180px !important;
     object-fit: cover;
+    display: block;
 }
+
 
 .portfolio-card h3 {
     margin: 15px 0;
